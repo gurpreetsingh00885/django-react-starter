@@ -6,7 +6,7 @@ This is a simple Django + React project template with my preferred setup.
 
 ```bash
 $ django-admin.py startproject \
-  --template=https://github.com/gurpreetsingh00885/django-react-template/archive/master.zip \
+  --template=https://github.com/gurpreetsingh00885/django-react-starter/archive/master.zip \
   --name=Procfile \
   --extension=py,md,env \
   project_name
