@@ -35,6 +35,7 @@ class Common(Configuration):
         'django.contrib.staticfiles',
 
         'django_extensions',
+        'webpack_loader',
         'debug_toolbar',
 
         'react_django_starter.users',
@@ -56,7 +57,7 @@ class Common(Configuration):
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
+            'DIRS': [os.path.join(BASE_DIR, "templates"),],
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
@@ -119,6 +120,8 @@ class Development(Common):
     """
     The in-development settings and the default configuration.
     """
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
     DEBUG = True
 
     ALLOWED_HOSTS = []
@@ -131,12 +134,20 @@ class Development(Common):
         'debug_toolbar.middleware.DebugToolbarMiddleware'
     ]
 
+    WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.dev.json'),
+        }
+    }
 
 class Staging(Common):
     """
     The in-staging settings.
     """
     # Security
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
     SESSION_COOKIE_SECURE = values.BooleanValue(True)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
     SECURE_CONTENT_TYPE_NOSNIFF = values.BooleanValue(True)
@@ -149,9 +160,23 @@ class Staging(Common):
         ('HTTP_X_FORWARDED_PROTO', 'https')
     )
 
+    WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.prod.json'),
+        }
+    }
+
 
 class Production(Staging):
     """
     The in-production settings.
     """
-    pass
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+    
+    WEBPACK_LOADER = {
+    'DEFAULT': {
+            'BUNDLE_DIR_NAME': 'bundles/',
+            'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.prod.json'),
+        }
+    }
