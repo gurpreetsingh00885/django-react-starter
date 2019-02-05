@@ -38,7 +38,7 @@ DJANGO_SECURE_SSL_REDIRECT='yes'
 DJANGO_SECURE_PROXY_SSL_HEADER='HTTP_X_FORWARDED_PROTO,https'
 ```
 
-### Heroku
+### Heroku - WIP
 
 ```bash
 $ heroku create
