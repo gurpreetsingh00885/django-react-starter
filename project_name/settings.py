@@ -1,11 +1,11 @@
 """
-Django settings for react_django_starter project.
+Django settings for {{ project_name }} project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/2.1/topics/settings/
+https://docs.djangoproject.com/en/{{ docs_version }}/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/2.1/ref/settings/
+https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/
 """
 import os
 
@@ -38,7 +38,7 @@ class Common(Configuration):
         'webpack_loader',
         'debug_toolbar',
 
-        'react_django_starter.users',
+        '{{ project_name }}.users',
     ]
 
     MIDDLEWARE = [
@@ -52,7 +52,7 @@ class Common(Configuration):
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ]
 
-    ROOT_URLCONF = 'react_django_starter.urls'
+    ROOT_URLCONF = '{{ project_name }}.urls'
 
     TEMPLATES = [
         {
@@ -70,16 +70,16 @@ class Common(Configuration):
         },
     ]
 
-    WSGI_APPLICATION = 'react_django_starter.wsgi.application'
+    WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
     # Database
-    # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+    # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
     DATABASES = values.DatabaseURLValue(
         'sqlite:///{}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
     )
 
     # Password validation
-    # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+    # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#auth-password-validators
     AUTH_PASSWORD_VALIDATORS = [
         {
             'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -96,7 +96,7 @@ class Common(Configuration):
     ]
 
     # Internationalization
-    # https://docs.djangoproject.com/en/2.1/topics/i18n/
+    # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/
     LANGUAGE_CODE = 'en-us'
 
     TIME_ZONE = 'UTC'
@@ -108,7 +108,7 @@ class Common(Configuration):
     USE_TZ = True
 
     # Static files (CSS, JavaScript, Images)
-    # https://docs.djangoproject.com/en/2.1/howto/static-files/
+    # https://docs.djangoproject.com/en/{{ docs_version }}/howto/static-files/
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
