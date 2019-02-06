@@ -34,11 +34,13 @@ class Common(Configuration):
         'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
 
+        'rest_framework',
         'django_extensions',
         'webpack_loader',
         'debug_toolbar',
 
         '{{ project_name }}.users',
+        'api',
     ]
 
     MIDDLEWARE = [
